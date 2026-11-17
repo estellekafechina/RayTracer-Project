@@ -2,10 +2,10 @@
 
 ## Commands
 
-- Clean: `cmake --workflow --preset clean`
-- Build: `cmake --workflow --preset build`
-- Run: `cmake --workflow --preset start`
-- Test: `cmake --workflow --preset test`
+- Clean: `make clean`
+- Build: `make build`
+- Run: `make run`
+- Test: `make test`
 
 ## Architecture decisions
 

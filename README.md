@@ -18,18 +18,18 @@ toolchain is unavailable or when every contributor needs exactly the same setup.
 
 ## Everyday shortcuts
 
-CMake workflow presets provide equivalents to common `npm run` commands. Each
-workflow configures the project automatically before performing its task:
+CMake workflow presets remain the source of truth, while the Makefile provides
+short equivalents to common `npm run` commands:
 
 | Task | Command |
 |---|---|
-| Remove compiled development files | `cmake --workflow --preset clean` |
-| Build the development project | `cmake --workflow --preset build` |
-| Build and run the application | `cmake --workflow --preset start` |
-| Build and run all tests | `cmake --workflow --preset test` |
+| Remove compiled development files | `make clean` |
+| Build the development project | `make build` |
+| Build and run the application | `make run` |
+| Build and run all tests | `make test` |
 
-These commands work from the repository root on Linux, macOS and Windows, both
-natively and inside the dev container.
+Run these commands from the repository root. They are available in the dev
+container and work natively wherever CMake and Make are installed.
 
 ## Quick start with a dev container
 
@@ -46,7 +46,7 @@ Requirements:
 4. In the container terminal, build and run the demo:
 
    ```sh
-   cmake --workflow --preset start
+   make run
    ```
 
 Expected output:
@@ -109,7 +109,7 @@ Use this red-green-refactor loop:
 Build and run the complete test suite:
 
 ```sh
-cmake --workflow --preset test
+make test
 ```
 
 Run the Catch2 executable directly when filtering tests or inspecting its
