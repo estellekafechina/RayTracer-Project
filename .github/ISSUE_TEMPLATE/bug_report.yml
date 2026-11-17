@@ -1,0 +1,53 @@
+name: Bug report
+description: Report reproducible incorrect behaviour
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for helping improve the project.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened, and what did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest sequence that reproduces the problem.
+      placeholder: |
+        1. Run ...
+        2. Change ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Dev container
+        - Native Linux
+        - Native macOS
+        - Native Windows
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs and additional context
+      description: Include relevant output without secrets or personal data.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues for the same problem.
+          required: true
+        - label: I did not include a security vulnerability in this public issue.
+          required: true

@@ -1,0 +1,38 @@
+name: Feature request
+description: Suggest an improvement or new capability
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user or contributor problem should be solved?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe the result without prescribing unnecessary implementation details.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What workarounds or other approaches have you considered?
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues for a similar request.
+          required: true
+        - label: I identified whether this may require a new or replacement ADR.
+          required: true

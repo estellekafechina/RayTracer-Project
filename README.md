@@ -137,3 +137,16 @@ source file is added, list it in `tests/CMakeLists.txt` and rebuild.
 
 The discovery work is documented in
 [`docs/discovery/discovery-report.md`](docs/discovery/discovery-report.md).
+
+## Contributing
+
+Before submitting a change, read [CONTRIBUTING.md](CONTRIBUTING.md), the
+[Code of Conduct](CODE_OF_CONDUCT.md) and the architecture decisions in
+[`docs/adr/`](docs/adr/). Report suspected vulnerabilities privately according
+to [SECURITY.md](SECURITY.md).
+
+Pull requests are built and tested in the same dev container by GitHub Actions.
+
+## Licence
+
+This project is available under the [MIT Licence](LICENSE).
