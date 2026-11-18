@@ -15,7 +15,7 @@ folder, and write includes from the `src/` root, for example
 
 ## Status
 
-Proposed
+Accepted
 
 ## Consequences
 
