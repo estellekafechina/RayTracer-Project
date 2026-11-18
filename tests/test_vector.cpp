@@ -51,3 +51,14 @@ TEST_CASE("O + t * D gives the point on the ray at t", "[vector]") {
     REQUIRE(result.y() == 0);
     REQUIRE(result.z() == 0);
 }
+
+TEST_CASE("dot multiplies in pairs, then adds", "[vector]") {
+    REQUIRE(Vector(3, 4, 0).dot(Vector(4, 3, 0)) == 24);
+    REQUIRE(Vector(3, 4, 0).dot(Vector(4, -3, 0)) == 0);
+    REQUIRE(Vector(3, 4, 12).dot(Vector(4, 3, 1)) == 36);
+}
+
+TEST_CASE("length follows Pythagoras", "[vector]") {
+    REQUIRE(Vector(3, -4, 0).length() == 5);
+    REQUIRE(Vector(3, 4, 12).length() == 13);
+}
