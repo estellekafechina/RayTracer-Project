@@ -17,3 +17,17 @@ TEST_CASE("a + b includes the z component", "[vector]") {
     REQUIRE(sum.y() == 1);
     REQUIRE(sum.z() == 3);
 }
+
+TEST_CASE("a - b subtracts each component", "[vector]") {
+    const Vector first = Vector(4, 5, 0) - Vector(1, 1, 0);
+
+    REQUIRE(first.x() == 3);
+    REQUIRE(first.y() == 4);
+    REQUIRE(first.z() == 0);
+
+    const Vector second = Vector(4, 5, 6) - Vector(1, 1, 2);
+
+    REQUIRE(second.x() == 3);
+    REQUIRE(second.y() == 4);
+    REQUIRE(second.z() == 4);
+}
