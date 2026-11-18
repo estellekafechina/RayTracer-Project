@@ -21,11 +21,13 @@ endif()
 
 add_library(raytracer_core
     src/greeting.cpp
+    src/vector.cpp
 )
 
 target_include_directories(raytracer_core
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
 )
 
 target_link_libraries(raytracer_core PRIVATE project_warnings)
