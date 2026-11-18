@@ -21,3 +21,7 @@ Vector Vector::operator+(const Vector& other) const {
 Vector Vector::operator-(const Vector& other) const {
     return Vector(_x - other._x, _y - other._y, _z - other._z);
 }
+
+Vector operator*(double t, const Vector& vector) {
+    return Vector(t * vector.x(), t * vector.y(), t * vector.z());
+}

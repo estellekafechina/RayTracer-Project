@@ -31,3 +31,11 @@ TEST_CASE("a - b subtracts each component", "[vector]") {
     REQUIRE(second.y() == 4);
     REQUIRE(second.z() == 4);
 }
+
+TEST_CASE("t * v scales each component", "[vector]") {
+    const Vector result = 2.0 * Vector(3, -4, 1);
+
+    REQUIRE(result.x() == 6);
+    REQUIRE(result.y() == -8);
+    REQUIRE(result.z() == 2);
+}
