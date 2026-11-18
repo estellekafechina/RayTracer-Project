@@ -26,6 +26,7 @@ add_library(raytracer_core
     src/greeting.cpp
     src/math/vector.cpp
     src/render/camera.cpp
+    src/render/trace.cpp
 )
 
 target_include_directories(raytracer_core

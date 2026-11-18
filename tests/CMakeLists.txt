@@ -16,6 +16,7 @@ add_executable(raytracer_tests
     greeting_test.cpp
     math/test_vector.cpp
     render/test_camera.cpp
+    render/test_trace.cpp
     test_helpers.cpp
 )
 
