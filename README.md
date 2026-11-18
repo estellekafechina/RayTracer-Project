@@ -1,7 +1,8 @@
 # RayTracer Project
 
-This repository is a student C++ project that will grow into a ray tracer. The
-current milestone only establishes a small, cross-platform build and test setup.
+This repository is a student C++ ray tracer project. The current version traces
+one ray through the centre of a pinhole camera and returns the colour of a
+sphere when the ray hits it.
 
 ## Toolchain
 
@@ -52,7 +53,7 @@ Requirements:
 Expected output:
 
 ```text
-Hello, World!
+(1, 0, 0)
 ```
 
 The container is Linux-based and includes GCC, CMake, Ninja, Git and debugging
@@ -96,7 +97,7 @@ cmake --build --preset release
 
 Tests live in `tests/` and use Catch2 assertions. CTest remains the top-level
 runner, which means the same test command works locally, in the container and
-in a future CI pipeline.
+in CI.
 
 Use this red-green-refactor loop:
 
@@ -116,7 +117,7 @@ Run the Catch2 executable directly when filtering tests or inspecting its
 more detailed output:
 
 ```sh
-./build/dev/tests/raytracer_tests "[greeting]"
+./build/dev/tests/raytracer_tests "[vector]"
 ```
 
 On Windows, use `build\dev\tests\raytracer_tests.exe` instead. When a new test
@@ -126,14 +127,29 @@ source file is added, list it in `tests/CMakeLists.txt` and rebuild.
 
 ```text
 .
-├── .devcontainer/       # Reproducible Linux development environment
-├── app/                 # Executable entry point
-├── include/raytracer/   # Public headers
-├── src/                 # Library implementation
-├── tests/               # Catch2 tests
-├── CMakeLists.txt       # Project and target definitions
-└── CMakePresets.json    # Shared development and release commands
+├── .devcontainer/             # Reproducible Linux development environment
+├── .github/                   # Contribution templates and CI workflow
+├── docs/adr/                  # Architecture decision records
+├── src/
+│   ├── colour/                # Colour
+│   ├── geometry/              # Ray and Sphere
+│   ├── math/                  # Vector
+│   ├── render/                # Camera and trace
+│   └── main.cpp               # Executable entry point
+├── tests/
+│   ├── colour/                # Colour tests
+│   ├── geometry/              # Ray and Sphere tests
+│   ├── math/                  # Vector tests
+│   ├── render/                # Camera and trace tests
+│   ├── test_helpers.cpp
+│   └── test_helpers.h
+├── CMakeLists.txt             # Project and target definitions
+└── CMakePresets.json          # Shared development and release commands
 ```
+
+New classes go in the folder for their concept under `src/`, and their tests go
+in the matching folder under `tests/`. Includes start from the `src/` root, as
+described in [`docs/adr/0005-organize-source-by-concept.md`](docs/adr/0005-organize-source-by-concept.md).
 
 The discovery work is documented in
 [`docs/discovery/discovery-report.md`](docs/discovery/discovery-report.md).

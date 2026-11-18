@@ -20,8 +20,12 @@ else()
 endif()
 
 add_library(raytracer_core
-    src/greeting.cpp
+    src/colour/colour.cpp
+    src/geometry/ray.cpp
+    src/geometry/sphere.cpp
     src/math/vector.cpp
+    src/render/camera.cpp
+    src/render/trace.cpp
 )
 
 target_include_directories(raytracer_core
@@ -33,7 +37,7 @@ target_include_directories(raytracer_core
 target_link_libraries(raytracer_core PRIVATE project_warnings)
 
 add_executable(raytracer
-    app/main.cpp
+    src/main.cpp
 )
 
 target_link_libraries(raytracer
