@@ -11,7 +11,7 @@ FetchContent_MakeAvailable(Catch2)
 
 add_executable(raytracer_tests
     greeting_test.cpp
-    test_vector.cpp
+    math/test_vector.cpp
 )
 
 target_link_libraries(raytracer_tests
