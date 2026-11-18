@@ -7,42 +7,38 @@ using Catch::Matchers::WithinAbs;
 
 const double tolerance = 1e-9;
 
+static void requireVectorsEqual(const Vector& actual, const Vector& expected) {
+    REQUIRE_THAT(actual.x(), WithinAbs(expected.x(), tolerance));
+    REQUIRE_THAT(actual.y(), WithinAbs(expected.y(), tolerance));
+    REQUIRE_THAT(actual.z(), WithinAbs(expected.z(), tolerance));
+}
+
 TEST_CASE("a + b adds each component", "[vector]") {
     const Vector sum = Vector(3, 4, 0) + Vector(4, -3, 0);
 
-    REQUIRE(sum.x() == 7);
-    REQUIRE(sum.y() == 1);
-    REQUIRE(sum.z() == 0);
+    requireVectorsEqual(sum, Vector(7, 1, 0));
 }
 
 TEST_CASE("a + b includes the z component", "[vector]") {
     const Vector sum = Vector(3, 4, 1) + Vector(4, -3, 2);
 
-    REQUIRE(sum.x() == 7);
-    REQUIRE(sum.y() == 1);
-    REQUIRE(sum.z() == 3);
+    requireVectorsEqual(sum, Vector(7, 1, 3));
 }
 
 TEST_CASE("a - b subtracts each component", "[vector]") {
     const Vector first = Vector(4, 5, 0) - Vector(1, 1, 0);
 
-    REQUIRE(first.x() == 3);
-    REQUIRE(first.y() == 4);
-    REQUIRE(first.z() == 0);
+    requireVectorsEqual(first, Vector(3, 4, 0));
 
     const Vector second = Vector(4, 5, 6) - Vector(1, 1, 2);
 
-    REQUIRE(second.x() == 3);
-    REQUIRE(second.y() == 4);
-    REQUIRE(second.z() == 4);
+    requireVectorsEqual(second, Vector(3, 4, 4));
 }
 
 TEST_CASE("t * v scales each component", "[vector]") {
     const Vector result = 2.0 * Vector(3, -4, 1);
 
-    REQUIRE(result.x() == 6);
-    REQUIRE(result.y() == -8);
-    REQUIRE(result.z() == 2);
+    requireVectorsEqual(result, Vector(6, -8, 2));
 }
 
 TEST_CASE("O + t * D gives the point on the ray at t", "[vector]") {
@@ -52,9 +48,7 @@ TEST_CASE("O + t * D gives the point on the ray at t", "[vector]") {
 
     const Vector result = O + t * D;
 
-    REQUIRE(result.x() == 6);
-    REQUIRE(result.y() == 0);
-    REQUIRE(result.z() == 0);
+    requireVectorsEqual(result, Vector(6, 0, 0));
 }
 
 TEST_CASE("dot multiplies in pairs, then adds", "[vector]") {
@@ -71,9 +65,7 @@ TEST_CASE("length follows Pythagoras", "[vector]") {
 TEST_CASE("normalised keeps the direction and gives length 1", "[vector]") {
     const Vector unit = Vector(3, -4, 0).normalised();
 
-    REQUIRE_THAT(unit.x(), WithinAbs(0.6, tolerance));
-    REQUIRE_THAT(unit.y(), WithinAbs(-0.8, tolerance));
-    REQUIRE_THAT(unit.z(), WithinAbs(0, tolerance));
+    requireVectorsEqual(unit, Vector(0.6, -0.8, 0));
     REQUIRE_THAT(
         Vector(3, 4, 12).normalised().length(),
         WithinAbs(1, tolerance)
