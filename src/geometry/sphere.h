@@ -1,8 +1,8 @@
 #pragma once
 
-#include "colour.h"
+#include "colour/colour.h"
 #include "math/vector.h"
-#include "ray.h"
+#include "geometry/ray.h"
 
 class Sphere {
 public:
