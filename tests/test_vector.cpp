@@ -39,3 +39,15 @@ TEST_CASE("t * v scales each component", "[vector]") {
     REQUIRE(result.y() == -8);
     REQUIRE(result.z() == 2);
 }
+
+TEST_CASE("O + t * D gives the point on the ray at t", "[vector]") {
+    const Vector O(0, 8, 0);
+    const Vector D(3, -4, 0);
+    const double t = 2;
+
+    const Vector result = O + t * D;
+
+    REQUIRE(result.x() == 6);
+    REQUIRE(result.y() == 0);
+    REQUIRE(result.z() == 0);
+}
