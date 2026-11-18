@@ -2,9 +2,6 @@
 #include "test_helpers.h"
 
 #include <catch2/catch_test_macros.hpp>
-#include <catch2/matchers/catch_matchers_floating_point.hpp>
-
-using Catch::Matchers::WithinAbs;
 
 TEST_CASE("trace returns the sphere colour when the ray hits", "[trace]") {
     const Ray ray(Vector(0.0, 0.0, -1.0), Vector(0.0, 0.0, 1.0));
@@ -14,11 +11,7 @@ TEST_CASE("trace returns the sphere colour when the ray hits", "[trace]") {
         Colour(1.0, 0.0, 0.0)
     );
 
-    const Colour colour = trace(ray, sphere);
-
-    REQUIRE_THAT(colour.r(), WithinAbs(1.0, tolerance));
-    REQUIRE_THAT(colour.g(), WithinAbs(0.0, tolerance));
-    REQUIRE_THAT(colour.b(), WithinAbs(0.0, tolerance));
+    requireColoursEqual(trace(ray, sphere), Colour(1.0, 0.0, 0.0));
 }
 
 TEST_CASE("trace returns black when the ray misses", "[trace]") {
@@ -29,9 +22,5 @@ TEST_CASE("trace returns black when the ray misses", "[trace]") {
         Colour(1.0, 0.0, 0.0)
     );
 
-    const Colour colour = trace(ray, sphere);
-
-    REQUIRE_THAT(colour.r(), WithinAbs(0.0, tolerance));
-    REQUIRE_THAT(colour.g(), WithinAbs(0.0, tolerance));
-    REQUIRE_THAT(colour.b(), WithinAbs(0.0, tolerance));
+    requireColoursEqual(trace(ray, sphere), Colour(0.0, 0.0, 0.0));
 }

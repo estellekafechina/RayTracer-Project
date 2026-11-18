@@ -2,9 +2,6 @@
 #include "test_helpers.h"
 
 #include <catch2/catch_test_macros.hpp>
-#include <catch2/matchers/catch_matchers_floating_point.hpp>
-
-using Catch::Matchers::WithinAbs;
 
 TEST_CASE("A ray through a sphere is a hit", "[sphere]") {
     const Ray ray(Vector(0.0, 0.0, -1.0), Vector(0.0, 0.0, 1.0));
@@ -57,9 +54,5 @@ TEST_CASE("Sphere stores its colour", "[sphere]") {
         Colour(1.0, 0.5, 0.0)
     );
 
-    const Colour colour = sphere.colour();
-
-    REQUIRE_THAT(colour.r(), WithinAbs(1.0, tolerance));
-    REQUIRE_THAT(colour.g(), WithinAbs(0.5, tolerance));
-    REQUIRE_THAT(colour.b(), WithinAbs(0.0, tolerance));
+    requireColoursEqual(sphere.colour(), Colour(1.0, 0.5, 0.0));
 }
