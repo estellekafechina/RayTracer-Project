@@ -11,6 +11,19 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+include(FetchContent)
+
+FetchContent_Declare(
+    lodepng
+    GIT_REPOSITORY https://github.com/lvandeve/lodepng.git
+    GIT_TAG 7b2893e35891c0c85bee5595caafaf3c2044b409
+)
+
+FetchContent_MakeAvailable(lodepng)
+
+add_library(lodepng STATIC ${lodepng_SOURCE_DIR}/lodepng.cpp)
+target_include_directories(lodepng PUBLIC ${lodepng_SOURCE_DIR})
+
 add_library(project_warnings INTERFACE)
 
 if(MSVC)
@@ -35,7 +48,7 @@ target_include_directories(raytracer_core
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
 )
 
-target_link_libraries(raytracer_core PRIVATE project_warnings)
+target_link_libraries(raytracer_core PRIVATE lodepng project_warnings)
 
 add_executable(raytracer
     src/main.cpp
