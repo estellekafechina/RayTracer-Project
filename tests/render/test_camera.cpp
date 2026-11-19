@@ -63,3 +63,35 @@ TEST_CASE("Camera supports a different pixel size", "[camera]") {
     );
 }
 
+TEST_CASE("Camera renders the sphere as a red plus", "[camera]") {
+    const Camera camera(
+        Vector(0.0, 0.0, -1.0),
+        Vector(0.0, 0.0, 0.0),
+        5.0
+    );
+    const Sphere sphere(
+        Vector(0.0, 0.0, 6.0),
+        5.0,
+        Colour(1.0, 0.0, 0.0)
+    );
+
+    const Image image = camera.render(sphere, 5, 3);
+
+    REQUIRE(image.width() == 5);
+    REQUIRE(image.height() == 3);
+
+    for (int row = 0; row < 3; ++row) {
+        for (int column = 0; column < 5; ++column) {
+            const bool shouldBeRed =
+                (column == 2 && row == 0) ||
+                (row == 1 && column >= 1 && column <= 3) ||
+                (column == 2 && row == 2);
+            const Colour expected = shouldBeRed
+                ? Colour(1.0, 0.0, 0.0)
+                : Colour(0.0, 0.0, 0.0);
+
+            requireColoursEqual(image.pixel(column, row), expected);
+        }
+    }
+}
+
