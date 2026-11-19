@@ -1,8 +1,8 @@
 # RayTracer Project
 
-This repository is a student C++ ray tracer project. The current version traces
-one ray through the centre of a pinhole camera and returns the colour of a
-sphere when the ray hits it.
+This repository is a student C++ ray tracer project. The current version sends
+one ray through every pixel of a pinhole camera and saves the rendered sphere
+as a 400×300 PNG image.
 
 ## Toolchain
 
@@ -10,6 +10,7 @@ sphere when the ray hits it.
 - [CMake](https://cmake.org/) 3.25 or newer
 - [Ninja](https://ninja-build.org/)
 - [Catch2](https://github.com/catchorg/Catch2) 3.16.1, downloaded by CMake
+- [LodePNG](https://github.com/lvandeve/lodepng) 20261102, downloaded by CMake
 - CTest as the common test runner
 
 CMake provides the same project definition on Linux, macOS and Windows. The
@@ -53,8 +54,10 @@ Requirements:
 Expected output:
 
 ```text
-(1, 0, 0)
+image.png
 ```
+
+The generated `image.png` contains a red sphere on a black background.
 
 The container is Linux-based and includes GCC, CMake, Ninja, Git and debugging
 tools. The source directory is mounted into it, so edits remain in the local
@@ -84,7 +87,8 @@ Run it from PowerShell on Windows:
 ```
 
 The first CMake configuration needs an internet connection to download the
-pinned Catch2 release. Later builds reuse the copy stored under `build/`.
+pinned Catch2 and LodePNG versions. Later builds reuse the copies stored under
+`build/`.
 
 For an optimized build without tests:
 
@@ -133,13 +137,17 @@ source file is added, list it in `tests/CMakeLists.txt` and rebuild.
 ├── src/
 │   ├── colour/                # Colour
 │   ├── geometry/              # Ray and Sphere
+│   ├── image/                 # In-memory Image
 │   ├── math/                  # Vector
+│   ├── output/                # ImageSaver and PngSaver
 │   ├── render/                # Camera and trace
 │   └── main.cpp               # Executable entry point
 ├── tests/
 │   ├── colour/                # Colour tests
 │   ├── geometry/              # Ray and Sphere tests
+│   ├── image/                 # Image tests
 │   ├── math/                  # Vector tests
+│   ├── output/                # PngSaver tests
 │   ├── render/                # Camera and trace tests
 │   ├── test_helpers.cpp
 │   └── test_helpers.h

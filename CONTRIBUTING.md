@@ -9,8 +9,8 @@ repository with an editor that supports the Dev Container specification, such
 as VS Code or Zed, then reopen the project in its container.
 
 The initial container setup configures the development build automatically.
-Catch2 is downloaded during the first configuration, so internet access is
-required once.
+Catch2 and LodePNG are downloaded during the first configuration, so internet
+access is required once.
 
 ## Everyday commands
 
