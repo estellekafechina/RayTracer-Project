@@ -9,6 +9,12 @@
 
 using Catch::Matchers::WithinAbs;
 
+TEST_CASE("Scene normalises the direction to the light", "[scene]") {
+    const Scene scene(Vector(0.0, 3.0, -4.0));
+
+    requireVectorsEqual(scene.toLight(), Vector(0.0, 0.6, -0.8));
+}
+
 TEST_CASE("Scene returns a plane hit before a sphere", "[scene]") {
     Scene scene(Vector(0.0, 1.0, 0.0));
     scene.add(std::make_unique<Sphere>(

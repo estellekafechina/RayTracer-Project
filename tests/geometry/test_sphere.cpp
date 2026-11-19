@@ -60,3 +60,19 @@ TEST_CASE("Sphere hit is empty behind the eye", "[sphere]") {
 
     REQUIRE_FALSE(sphere.hit(ray).has_value());
 }
+
+TEST_CASE("Sphere hit exits when the ray starts inside", "[sphere]") {
+    const Ray ray(Vector(0.0, 0.0, -1.0), Vector(0.0, 0.0, 1.0));
+    const Sphere sphere(
+        Vector(0.0, 0.0, 1.0),
+        5.0,
+        Material(Colour(1.0, 0.0, 0.0))
+    );
+
+    const std::optional<Hit> hit = sphere.hit(ray);
+
+    REQUIRE(hit.has_value());
+    REQUIRE_THAT(hit->t, WithinAbs(7.0, tolerance));
+    requireVectorsEqual(hit->point, Vector(0.0, 0.0, 6.0));
+    requireVectorsEqual(hit->normal, Vector(0.0, 0.0, 1.0));
+}

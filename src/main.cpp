@@ -15,7 +15,7 @@ int main() {
         Vector(0.0, 0.0, 0.0),
         2.0
     );
-    Scene scene(Vector(-1.0, 1.0, -1.0).normalised());
+    Scene scene(Vector(-1.0, 1.0, -1.0));
     scene.add(std::make_unique<Sphere>(
         Vector(0.0, 0.0, 9.0),
         5.0,
