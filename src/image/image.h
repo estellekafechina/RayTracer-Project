@@ -14,6 +14,8 @@ public:
     void setPixel(int column, int row, const Colour& colour);
 
 private:
+    int index(int column, int row) const;
+
     int _width;
     int _height;
     std::vector<Colour> _pixels;

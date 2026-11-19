@@ -10,7 +10,7 @@ TEST_CASE("Camera creates a ray through the screen centre", "[camera]") {
         2.0
     );
 
-    const Ray ray = camera.rayThroughCentre();
+    const Ray ray = camera.rayThroughPixel(0, 0, 1, 1);
 
     requireVectorsEqual(ray.origin(), Vector(0.0, 0.0, -1.0));
     requireVectorsEqual(ray.direction(), Vector(0.0, 0.0, 1.0));
@@ -23,7 +23,7 @@ TEST_CASE("Camera ray points from the eye to the screen centre", "[camera]") {
         2.0
     );
 
-    const Ray ray = camera.rayThroughCentre();
+    const Ray ray = camera.rayThroughPixel(0, 0, 1, 1);
 
     requireVectorsEqual(ray.origin(), Vector(1.0, 2.0, -1.0));
     requireVectorsEqual(ray.direction(), Vector(3.0, 4.0, 0.0));
