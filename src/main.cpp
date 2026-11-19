@@ -6,7 +6,11 @@
 #include <iostream>
 
 int main() {
-    const Camera camera(Vector(0.0, 0.0, -1.0), Vector(0.0, 0.0, 0.0));
+    const Camera camera(
+        Vector(0.0, 0.0, -1.0),
+        Vector(0.0, 0.0, 0.0),
+        2.0
+    );
     const Sphere sphere(
         Vector(0.0, 0.0, 9.0),
         5.0,
