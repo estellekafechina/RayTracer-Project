@@ -1,8 +1,8 @@
 # RayTracer Project
 
 This repository is a student C++ ray tracer project. The current version sends
-one ray through every pixel of a pinhole camera and saves the rendered sphere
-as a 400×300 PNG image.
+one ray through every pixel of a pinhole camera and saves a shaded red sphere
+on a grey floor as a 400×300 PNG image.
 
 ## Toolchain
 
@@ -57,7 +57,7 @@ Expected output:
 image.png
 ```
 
-The generated `image.png` contains a red sphere on a black background.
+The generated `image.png` contains a shaded red sphere on a grey floor.
 
 The container is Linux-based and includes GCC, CMake, Ninja, Git and debugging
 tools. The source directory is mounted into it, so edits remain in the local
@@ -136,19 +136,23 @@ source file is added, list it in `tests/CMakeLists.txt` and rebuild.
 ├── docs/adr/                  # Architecture decision records
 ├── src/
 │   ├── colour/                # Colour
-│   ├── geometry/              # Ray and Sphere
+│   ├── geometry/              # Shape, Hit, Ray, Sphere and Plane
 │   ├── image/                 # In-memory Image
+│   ├── material/              # Material and Lambert shading
 │   ├── math/                  # Vector
 │   ├── output/                # ImageSaver and PngSaver
 │   ├── render/                # Camera and trace
+│   ├── scene/                 # Scene and nearest-hit selection
 │   └── main.cpp               # Executable entry point
 ├── tests/
 │   ├── colour/                # Colour tests
-│   ├── geometry/              # Ray and Sphere tests
+│   ├── geometry/              # Ray, Sphere and Plane tests
 │   ├── image/                 # Image tests
+│   ├── material/              # Material tests
 │   ├── math/                  # Vector tests
 │   ├── output/                # PngSaver tests
 │   ├── render/                # Camera and trace tests
+│   ├── scene/                 # Scene tests
 │   ├── test_helpers.cpp
 │   └── test_helpers.h
 ├── CMakeLists.txt             # Project and target definitions
