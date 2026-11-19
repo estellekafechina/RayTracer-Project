@@ -20,6 +20,7 @@ add_executable(raytracer_tests
     output/test_png_saver.cpp
     render/test_camera.cpp
     render/test_trace.cpp
+    scene/test_scene.cpp
     test_helpers.cpp
 )
 
