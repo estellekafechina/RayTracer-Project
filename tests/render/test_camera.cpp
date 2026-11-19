@@ -72,7 +72,7 @@ TEST_CASE("Camera renders the sphere as a red plus", "[camera]") {
     const Sphere sphere(
         Vector(0.0, 0.0, 6.0),
         5.0,
-        Colour(1.0, 0.0, 0.0)
+        Material(Colour(1.0, 0.0, 0.0))
     );
 
     const Image image = camera.render(sphere, 5, 3);

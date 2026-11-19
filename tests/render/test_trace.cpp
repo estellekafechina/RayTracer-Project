@@ -8,7 +8,7 @@ TEST_CASE("trace returns the sphere colour when the ray hits", "[trace]") {
     const Sphere sphere(
         Vector(0.0, 0.0, 9.0),
         5.0,
-        Colour(1.0, 0.0, 0.0)
+        Material(Colour(1.0, 0.0, 0.0))
     );
 
     requireColoursEqual(trace(ray, sphere), Colour(1.0, 0.0, 0.0));
@@ -19,7 +19,7 @@ TEST_CASE("trace returns black when the ray misses", "[trace]") {
     const Sphere sphere(
         Vector(6.0, 0.0, 9.0),
         5.0,
-        Colour(1.0, 0.0, 0.0)
+        Material(Colour(1.0, 0.0, 0.0))
     );
 
     requireColoursEqual(trace(ray, sphere), Colour(0.0, 0.0, 0.0));

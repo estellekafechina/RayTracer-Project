@@ -15,7 +15,7 @@ int main() {
     const Sphere sphere(
         Vector(0.0, 0.0, 9.0),
         5.0,
-        Colour(1.0, 0.0, 0.0)
+        Material(Colour(1.0, 0.0, 0.0))
     );
     const Image image = camera.render(sphere, 400, 300);
 
