@@ -13,3 +13,5 @@ private:
     double _g;
     double _b;
 };
+
+Colour operator*(double t, const Colour& colour);

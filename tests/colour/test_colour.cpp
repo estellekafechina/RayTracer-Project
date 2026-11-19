@@ -13,3 +13,10 @@ TEST_CASE("Colour stores its red, green and blue components", "[colour]") {
     REQUIRE_THAT(colour.g(), WithinAbs(0.5, tolerance));
     REQUIRE_THAT(colour.b(), WithinAbs(0.0, tolerance));
 }
+
+TEST_CASE("t * colour scales every component", "[colour]") {
+    requireColoursEqual(
+        0.5 * Colour(1.0, 0.5, 0.0),
+        Colour(0.5, 0.25, 0.0)
+    );
+}
