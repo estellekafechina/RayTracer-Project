@@ -15,6 +15,7 @@ add_executable(raytracer_tests
     geometry/test_sphere.cpp
     image/test_image.cpp
     math/test_vector.cpp
+    output/test_png_saver.cpp
     render/test_camera.cpp
     render/test_trace.cpp
     test_helpers.cpp
@@ -25,6 +26,7 @@ target_include_directories(raytracer_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(raytracer_tests
     PRIVATE
         Catch2::Catch2WithMain
+        lodepng
         project_warnings
         raytracer_core
 )
