@@ -17,7 +17,8 @@ int main() {
         5.0,
         Material(Colour(1.0, 0.0, 0.0))
     );
-    const Image image = camera.render(sphere, 400, 300);
+    const Vector toLight = Vector(-1.0, 1.0, -1.0).normalised();
+    const Image image = camera.render(sphere, toLight, 400, 300);
 
     const std::string path = "image.png";
     const PngSaver saver;

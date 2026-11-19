@@ -4,4 +4,4 @@
 #include "geometry/ray.h"
 #include "geometry/sphere.h"
 
-Colour trace(const Ray& ray, const Sphere& sphere);
+Colour trace(const Ray& ray, const Sphere& sphere, const Vector& toLight);
