@@ -1,9 +1,10 @@
-#include "colour/colour.h"
 #include "geometry/sphere.h"
+#include "image/image.h"
+#include "output/png_saver.h"
 #include "render/camera.h"
-#include "render/trace.h"
 
 #include <iostream>
+#include <string>
 
 int main() {
     const Camera camera(
@@ -16,11 +17,13 @@ int main() {
         5.0,
         Colour(1.0, 0.0, 0.0)
     );
-    const Ray ray = camera.rayThroughCentre();
-    const Colour pixel = trace(ray, sphere);
+    const Image image = camera.render(sphere, 400, 300);
 
-    std::cout << "(" << pixel.r() << ", " << pixel.g() << ", " << pixel.b()
-              << ")\n";
+    const std::string path = "image.png";
+    const PngSaver saver;
+    saver.save(image, path);
+
+    std::cout << path << '\n';
 
     return 0;
 }

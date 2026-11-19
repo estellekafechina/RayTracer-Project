@@ -64,6 +64,7 @@ target_link_libraries(raytracer
 add_custom_target(start
     COMMAND $<TARGET_FILE:raytracer>
     DEPENDS raytracer
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     USES_TERMINAL
     COMMENT "Running raytracer"
 )
