@@ -11,6 +11,7 @@ FetchContent_MakeAvailable(Catch2)
 
 add_executable(raytracer_tests
     colour/test_colour.cpp
+    geometry/test_plane.cpp
     geometry/test_ray.cpp
     geometry/test_sphere.cpp
     image/test_image.cpp

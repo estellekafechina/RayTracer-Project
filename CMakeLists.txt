@@ -34,6 +34,7 @@ endif()
 
 add_library(raytracer_core
     src/colour/colour.cpp
+    src/geometry/plane.cpp
     src/geometry/ray.cpp
     src/geometry/sphere.cpp
     src/image/image.cpp
